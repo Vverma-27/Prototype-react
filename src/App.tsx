@@ -1,8 +1,8 @@
 import { User } from "@supabase/supabase-js";
 import React, { useEffect, useState } from "react";
 import supabase from "./services/supabase";
-import AllocationScreen from "./UI/AllocationScreen";
-import AuthScreen from "./UI/Auth";
+import AllocationScreen from "./Pages/AllocationScreen";
+import AuthScreen from "./Pages/Auth";
 
 function App() {
   const [user, setUser] = useState<User | null>(null);
