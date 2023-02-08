@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { User } from "@supabase/supabase-js";
+import React, { useEffect, useState } from "react";
+import supabase from "./services/supabase";
+import AllocationScreen from "./UI/AllocationScreen";
+import AuthScreen from "./UI/Auth";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    (async () => {
+      const session = await supabase.auth.getSession();
+      setUser(session?.data.session?.user || null);
+      setLoading(false);
+      console.log("🚀 ~ file: App.tsx:10 ~ session", session);
+    })();
+    const { data: listener } = supabase.auth.onAuthStateChange(
+      async (event, session) => {
+        setUser(session?.user ?? null);
+        setLoading(false);
+      }
+    );
+
+    return () => {
+      listener.subscription.unsubscribe();
+    };
+  }, []);
+  return user ? <AllocationScreen /> : <AuthScreen />;
 }
 
 export default App;

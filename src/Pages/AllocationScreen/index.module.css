@@ -1,0 +1,46 @@
+.container {
+}
+.details_container,
+.project_container {
+  margin-bottom: 4vmin;
+}
+.container_heading {
+  color: #fff;
+  font-size: 4rem;
+}
+.section_heading {
+  color: #fff;
+  font-size: 2.5rem;
+}
+.select {
+  width: 40%;
+  font-size: 1.2rem;
+}
+.label {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1vmin;
+  display: inline-block;
+}
+.date_picker {
+  padding: 1vmin 2vmin;
+  font-size: 1.4rem;
+}
+.buttons_section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2vmin;
+  /* margin-bottom: 4vmin; */
+}
+.button {
+  padding: 1vmin 1.5vmin;
+  background: #eee;
+}
+.submit {
+  padding: 2vmin 2vmax;
+  font-size: 1.6rem;
+  background: #202124;
+  color: #eee;
+  margin-top: 8vmin;
+}
